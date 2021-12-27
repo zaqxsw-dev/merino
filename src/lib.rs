@@ -339,11 +339,6 @@ impl SOCKClient {
 
             let mut password = vec![0; plen[0] as usize];
 
-            // For some reason the vector needs to actually be full
-            for _ in 0..plen[0] {
-                password.push(0);
-            }
-
             self.stream.read_exact(&mut password).await?;
 
             let username = String::from_utf8_lossy(&username).to_string();
